@@ -1,0 +1,139 @@
+body {
+    margin: 0px; 
+    padding: 0px; 
+    font: 18px Arial, Verdana, Tahoma, sans-serif; 
+    display: flex;
+    justify-content: center;
+    background: url("/img/fundo_.jpg");
+}
+
+.container-main-box {
+    background: rgb(0, 0, 0, 0.5);
+    margin: 10px 10px; 
+    padding: 25px;
+    border: 0px solid #000;
+    width: 500px;
+    max-width: 90%;
+    max-height: 100%;
+    position: absolute;
+    top: 15vh;
+}
+
+.main-box {
+    background: transparent; 
+    color: #FFF;
+}
+
+.content {
+    position: relative; 
+    text-align: center; 
+    align-items: center;
+}
+
+.default {
+    outline-style: none;
+}
+
+.input {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 10px; 
+}
+
+input {
+    font: 1em 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+}
+
+div.input input.init,.success,.error {
+    background: transparent;
+    color: #FFF; 
+    padding: 10px 2.5px; 
+    border: none;
+    border-bottom: 1.5px solid #CCC;
+    border-radius: 2.5px;
+    transition: ease 0.25s;
+}
+
+div.input input.init {
+    border-color: #CCC;
+}
+
+div.input input.init-focus {
+    border-color: #3079FF;
+}
+
+/* div.input input.init:focus {
+    border-color: #3079FF;
+} */
+
+div.input input.success {
+    border-color: #07E907;
+}
+
+div.input input.success:focus {
+    border-color: #07E907;
+}
+
+div.input input.error {
+    border-color: #FF4242;
+}
+
+div.input input.error:focus {
+    border-color: #FF4242;
+}
+
+label {
+    margin: 15px 0px; 
+}
+
+.title-box .title{
+    font-weight: lighter;
+}
+
+div.title-box hr.rule {
+    margin-bottom: 15px;
+}
+
+h3.title {
+    margin-top: 5px;
+}
+
+button.btn-submit {
+    background: #3821ff;
+    color: #FFF;
+    margin: 10px 0px;
+    padding: 10px;
+    border: none;
+    border-radius: 7.5px;
+    font-size: 1.05em;
+    transition: ease 0.25s;
+}
+
+button.btn-submit:hover {
+    background: #1300b9;
+    cursor: pointer;
+}
+
+button.btn-submit:focus {
+    background: #1300b9;
+}
+
+.form-element {
+    width: 250px;
+    max-width: 100%;
+}
+
+small#footer {
+    font: 0.75em lighter;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    color: #DADADA; 
+}
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+}
