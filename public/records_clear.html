@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- jQuery import -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Registros :: Backup</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+            <span class="fa fa-clock-o" id="span-clock"></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./record.html">Novo registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./records_list.html">Meus registros</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ações
+                    </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Limpar registros<span class="sr-only">(página atual)</span></a>
+                    <a class="dropdown-item" href="./records_backup.html">Backup de registros</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="./account_delete.html">
+                        <div class="p-3 mb-2 bg-danger text-white">Apagar minha conta</div>
+                    </a>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="jumbotron">
+        <h1 class="display-4">Limpar registros</h1>
+        <p class="lead">
+            Aqui você poderá limpar os seus registros!
+        </p>
+        <hr class="my-4">
+        <p>
+            <div class="alert alert-info">
+                <b>Atenção!</b> Esta ação não poderá ser desfeita, portanto tenha certeza antes de limpar seus registros-ponto. Se desejar, <b><a href="records_backup.html">faça um backup</a></b> antes de limpar.
+            </div>
+        </p>
+
+        <button type="button" class="btn btn-block btn-lg btn-danger">Limpar registros</button>
+        
+      </div>
+
+    <!-- Controller default - JavaScript -->
+    <script src="../js/controller.js"></script>
+    <!-- JavaScript customizado (Opcional) -->
+    <script src="../js/records_clear.js"></script>
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
