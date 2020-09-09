@@ -20,3 +20,7 @@ div.records {
 td, th.table-head {
     text-align: center;
 }
+div.container-form {
+    width: 500px; 
+    max-width: 100%;
+}

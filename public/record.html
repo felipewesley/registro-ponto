@@ -17,7 +17,7 @@
 
     <title>Registro ponto :: Novo</title>
 </head>
-<body>
+<body class="bg-light">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -54,35 +54,37 @@
     </nav>
     
     <div class="jumbotron">
-        <h1 class="display-4">Olá, <span id="username">usuário</span>!</h1>
-        <p class="lead">
-            Registre aqui seus horários ponto!
-        </p>
-        <hr class="my-4">
-        <form action="#">
-            <div class="form-group">
-                <label for="record-type">Registro</label>
-                <select class="form-control" id="record-type">
-                    <option>Entrada</option>
-                    <option>Almoço - início</option>
-                    <option>Almoço - fim</option>
-                    <option>Saída</option>
-                </select>
-                <small id="txt-help" class="form-text text-muted">O ponto foi registrado em qual momento?</small>
-            </div>
-            <div class="form-group">
-                <label for="input-date">Data</label>
-                <input type="date" class="form-control" id="input-date" value="2020-01-12">
-                <small id="txt-help" class="form-text text-muted">Qual será a data deste registro?</small>
-            </div>
-            <div class="form-group">
-                <label for="input-time">Horário</label>
-                <input type="time" class="form-control" id="input-time" value="00:00">
-                <small id="txt-help" class="form-text text-muted">Qual o horário do registro?</small>
-            </div>
-            <button class="btn btn-lg btn-block btn-primary">Registrar</button>
+        <div class="container-form">
+            <h1 class="display-4">Olá, <span id="username">usuário</span>!</h1>
+            <p class="lead">
+                Registre seus horários ponto!
+            </p>
+            <hr class="my-4">
+            <form action="#" id="form-record">
+                <div class="form-group">
+                    <label for="record-type">Registro</label>
+                    <select class="form-control" id="record-type">
+                        <option value="1">Entrada</option>
+                        <option value="2">Almoço - início</option>
+                        <option value="3">Almoço - fim</option>
+                        <option value="4">Saída</option>
+                    </select>
+                    <small id="txt-help" class="form-text text-muted">O ponto foi registrado em qual momento?</small>
+                </div>
+                <div class="form-group">
+                    <label for="input-date">Data</label>
+                    <input type="date" class="form-control" id="input-date" value="aaaa-mm-dd">
+                    <small id="txt-help" class="form-text text-muted">Qual será a data deste registro?</small>
+                </div>
+                <div class="form-group">
+                    <label for="input-time">Horário</label>
+                    <input type="time" class="form-control" id="input-time" value="--:--">
+                    <small id="txt-help" class="form-text text-muted">Qual o horário do registro?</small>
+                </div>
+                <button class="btn btn-lg btn-block btn-primary" id="btn-recorder">Registrar</button>
 
-        </form>
+            </form>
+        </div>
       </div>
 
     <!-- Controller default - JavaScript -->

@@ -2,36 +2,44 @@ class Database {
     
     keyWord = 'PrimaryKey'
     dateWord = 'dateSrc'
-
     itemExists(key){
         const e = window.localStorage.getItem(key)
-        return e == undefined ? false : true
+        if(e == undefined){
+            return false
+        }
+        return true
     }
     getItem(key){
         const e = window.localStorage.getItem(key)
-        return e == undefined ? false : e
+        if(e == undefined){
+            return false
+        }
+        return e
     }
     getItemByDate(date = 'yyyy-mm-dd'){
         const lastIndex = parseInt(this.getItem(this.keyWord))
-        // window.localStorage.setItem(this.dateWord, date)
+        window.localStorage.setItem(this.dateWord, date)
 
         for (let index = 0; index <= lastIndex; index++) {
             const element = JSON.parse(this.getItem(index))
 
-            if(element.date == date){
+            if(element.key == date){
                 return JSON.stringify(element)
             }
         }
         return false
     }
     setItem(index, element){
+        // const i = this.IndexController()
         return window.localStorage.setItem(index, JSON.stringify(element))
     }
     removeItem(key){
-        const r = JSON.parse(this.getItem(key))
-        const str = `Deseja realmente excluir o registro #${key} de ${r.date}?`
-        
-        return confirm(str) ? window.localStorage.removeItem(key) : false
+        const r = this.getItem(key)
+        const str = `Deseja realmente excluir o registro #${key} de ${Date(r.key).toString}?`
+        if(confirm(str)){
+            return window.localStorage.removeItem(key)
+        }
+        return false
     }
     IndexController(){
         return this.getItem(this.keyWord)
@@ -42,20 +50,17 @@ class Database {
             parseInt(this.getItem(this.keyWord))+1
         )
     }
-    parseObject(json){
-        return JSON.parse(json)
-    }
 }
 
 class Record {
-    index
+    key
     date
     entrada
     almocoEntrada
     almocoSaida
     saida
     constructor(date){
-        try {            
+        try {
             this.date = date
         } catch (error) {
             alert(`Algo nao correu bem :( tente novamente mais tarde`)
@@ -63,6 +68,12 @@ class Record {
             return false
         }
         return true
+    }
+    getKey(){
+        return this.key
+    }
+    setKey(key){
+        this.key = key
     }
     setRecord(type, element){
         switch(parseInt(type)){
@@ -86,6 +97,7 @@ class Record {
     jsonToRecord(jsonElement){
         let e = JSON.parse(jsonElement)
         try {
+            this.setKey(e.key)                  // Chave do elemento no armazenamento
             this.setRecord(1, e.entrada)        // 1 - Entrada
             this.setRecord(2, e.almocoEntrada)  // 2 - Almoço - início
             this.setRecord(3, e.almocoSaida)    // 3 - Almoço - fim
@@ -95,9 +107,6 @@ class Record {
             return false
         }
         return true
-    }
-    setIndex(index){
-        this.index = index
     }
     __setEntrada(element){
         this.entrada = element
@@ -126,41 +135,24 @@ $('#btn-recorder').click(event => {
     let date = $('#input-date').val()
     let type = $('#record-type').val()
     let time = $('#input-time').val()
-    let index = undefined
-    // let registro = null
 
-    let recordByType = {type,date,time}
+    let element = {type,date,time}
     // Recupera os elementos armazenados através da data
+    let e = JSON.parse(db.getItemByDate(date))
 
     let registro = new Record(date)
 
-    let element = JSON.parse(db.getItemByDate(date))
-
-    console.log(element)
-
-    if(db.itemExists(element.index)){
-
-        index = element.index
-
-        // captura o elemento do armazenamento e inicializa o objeto Record com os dados coletados
-        let item = db.getItem(index)
+    if(db.itemExists(e.key)){
+        let item = db.getItem(e.key)
         registro.jsonToRecord(item)
-
     } else {
-        // Define o proximo index de registros
         db.IndexControllerIncrement()
-        index = db.IndexController()
-
     }
-
-    // Define o index do registro após a atualização de indices no armazenamento
-    registro.setIndex(index)
-    // Insere o registro atual capturado do form
-    registro.setRecord(type, recordByType)
+    registro.setRecord(type, element)
 
     try {
         
-        db.setItem(index, registro)
+        db.setItem(e.key, registro)
         alert(`Registro salvo com sucesso`)
 
     } catch(error){

@@ -1,4 +1,4 @@
-class Register {
+/*class Register {
     format = {
         type: undefined, 
         date: undefined, 
@@ -55,5 +55,4 @@ class Database {
         }
     }
 }
-
-const db = new Database
+*/
