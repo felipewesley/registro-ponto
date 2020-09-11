@@ -22,6 +22,10 @@ $(document).ready(() => {
     let listaRegistros = document.getElementById('listaRegistros')
     listaRegistros.innerHTML = ''
 
+    if(window.localStorage.getItem('PrimaryKey') != undefined && parseInt(window.localStorage.getItem('PrimaryKey')) > 0){
+        $('#alert-not-records').css('display', 'none')
+    }
+
     let registros = db.getAllRegisters()
 
     registros.forEach(e => {
@@ -33,11 +37,11 @@ $(document).ready(() => {
         horario['almocoSaida'] = e.almocoSaida.time
         horario['saida'] = e.saida.time
 
-        horario.forEach(e => {
-            if(e == undefined){
-                e = '--:--'
-            }
-        })
+        // horario.forEach(e => {
+        //     if(e == undefined){
+        //         e = '--:--'
+        //     }
+        // })
 
         let line = listaRegistros.insertRow();
         line.insertCell(0).innerHTML = `<b>${e.date}</b>`;
