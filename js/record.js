@@ -54,21 +54,28 @@ class Record {
     almocoEntrada
     almocoSaida
     saida
+    /**
+     * 
+     * @param {String} date yyyy-mm-dd
+     */
     constructor(date){
         try {            
-            this.date = date
+            
+            let d = String(date).split('-')
+
+            let dateFormated = `${d[2]}/${d[1]}/${d[0]}`
+
+            this.date = dateFormated
 
             let elementDefault = {
                 type: "-",
-                date: date,
+                date: dateFormated,
                 time: "--:--",
                 setType(type){
                     this.type = type
                     return this
                 }
             }
-
-            // let e = JSON.parse(db.getItemByDate(element.date))
             
             this.__setEntrada(elementDefault.setType(1))
             this.__setAlmocoEntrada(elementDefault.setType(2))
@@ -84,6 +91,9 @@ class Record {
     }
     setRecord(type, element){
 
+        let d = String(element.date).split('-')
+
+        element.date = `${d[2]}/${d[1]}/${d[0]}`
         switch(parseInt(type)){
             case 1:
                 this.__setEntrada(element)
@@ -135,14 +145,31 @@ class Record {
 const db = new Database
 
 $(document).ready(() => {
+    
     if(!db.itemExists(db.keyWord)){
         window.localStorage.setItem(db.keyWord, 0)
     }
+
+    let d = new Date()
+
+    let today = `${d.getFullYear()}-${String(parseInt(d.getMonth())+1).padStart(2, '0')}-${d.getDate()}`
+    $('#input-date').val(today)
+
+    let now = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
+    $('#input-time').val(now)
+    
 })
 
 $('#btn-recorder').click(event => {
 
+    // let d = String($('#input-date').val()).split('-')
+    // console.log(d)
+    // let date = `${d[2]}/${d[1]}/${d[0]}`
+    // console.log(date)
     let date = $('#input-date').val()
+    let d = String(date).split('-')
+    let dateFormated = `${String(d[2]).padStart(2, '0')}/${String(d[1]).padStart(2, '0')}/${d[0]}`
+    
     let type = $('#record-type').val()
     let time = $('#input-time').val()
     let index = undefined
@@ -153,7 +180,7 @@ $('#btn-recorder').click(event => {
 
     let registro = new Record(date)
 
-    let element = JSON.parse(db.getItemByDate(date))
+    let element = JSON.parse(db.getItemByDate(dateFormated))
 
     console.log(element)
 
