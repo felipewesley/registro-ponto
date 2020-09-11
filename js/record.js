@@ -57,6 +57,24 @@ class Record {
     constructor(date){
         try {            
             this.date = date
+
+            let elementDefault = {
+                type: "-",
+                date: date,
+                time: "--:--",
+                setType(type){
+                    this.type = type
+                    return this
+                }
+            }
+
+            // let e = JSON.parse(db.getItemByDate(element.date))
+            
+            this.__setEntrada(elementDefault.setType(1))
+            this.__setAlmocoEntrada(elementDefault.setType(2))
+            this.__setAlmocoSaida(elementDefault.setType(3))
+            this.__setSaida(elementDefault.setType(4))
+
         } catch (error) {
             alert(`Algo nao correu bem :( tente novamente mais tarde`)
             console.log(error)
@@ -65,6 +83,7 @@ class Record {
         return true
     }
     setRecord(type, element){
+
         switch(parseInt(type)){
             case 1:
                 this.__setEntrada(element)
